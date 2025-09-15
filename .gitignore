@@ -1,0 +1,51 @@
+# ==========================
+# Node.js backend
+# ==========================
+/backend/node_modules/
+/backend/package-lock.json
+/backend/package.json
+# Logs
+/backend/logs
+/backend/*.log
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+
+# Environment variables
+/backend/.env
+
+# Runtime data
+/backend/pids
+/backend/*.pid
+/backend/*.seed
+/backend/*.pid.lock
+
+# Coverage
+/backend/coverage/
+/backend/*.lcov
+
+# Build outputs
+/backend/dist/
+/backend/build/
+
+# Uploads (if storing files locally instead of cloud/GridFS)
+/backend/uploads/
+
+# ==========================
+# OS-specific files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# IDE/editor settings
+# ==========================
+.vscode/
+.idea/
+*.swp
+
+# ==========================
+# Backup/temporary files
+# ==========================
+*.bak
+*.tmp
