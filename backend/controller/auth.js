@@ -93,4 +93,18 @@ async function loginAPI(req, res) {
   }
 }
 
-export { registerAPI, loginAPI };
+function logoutAPI(req, res) {
+  try {
+    res.clearCookie("token");
+    return res.status(200).json({
+      message: "logout successful!",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal server error from logoutAPI",
+      error: err,
+    });
+  }
+}
+
+export { registerAPI, loginAPI, logoutAPI };
