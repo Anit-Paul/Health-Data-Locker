@@ -4,6 +4,6 @@ import authMiddleware from '../middleware/authUser.js';
 const detailsRouter=express.Router()
 
 detailsRouter.post("/save",authMiddleware,saveAPI);
-detailsRouter.post("/get",fetchAPI);
+detailsRouter.post("/get",authMiddleware,fetchAPI);
 
 export default detailsRouter;

@@ -54,5 +54,18 @@ async function saveAPI(req, res) {
     });
   }
 }
-async function fetchAPI(req, res) {}
+async function fetchAPI(req, res) {
+  try {
+    const userId = req.user.id;
+    const userData=await DetailsModel.find({userId});
+    return res.status(201).json({
+        user:userData
+    })
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal server error from fetchAPI",
+      error: err,
+    });
+  }
+}
 export { saveAPI, fetchAPI };
