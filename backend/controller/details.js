@@ -58,6 +58,9 @@ async function fetchAPI(req, res) {
   try {
     const userId = req.user.id;
     const userData=await DetailsModel.find({userId});
+    if (!userData) {
+      return res.status(404).json({ message: "No medical details found" });
+    }
     return res.status(201).json({
         user:userData
     })
