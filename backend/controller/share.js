@@ -1,11 +1,13 @@
 import { setRecord, getRecord } from "../service/token.js";
 import RecordModel from "../models/Records.js";
+import dotenv from 'dotenv'
+dotenv.config()
 function shareAPI(req, res) {
   try {
     const { recordId } = req.body;
     const token = setRecord(recordId);
 
-    const link = `http://localhost:3000/api/share/${token}`;
+    const link = `${process.env.BASE_URL}/api/share/${token}`;
 
     return res.status(200).json({
       message: "Share link created successfully",
