@@ -4,6 +4,7 @@ import authRouter from './routers/auth.js';
 import detailsRouter from './routers/details.js';
 import cookieParser from 'cookie-parser';
 import recordRouter from './routers/record.js';
+import shareRouter from './routers/share.js';
 const app=express();
 
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use("/api/auth",authRouter);
 app.use("/api/details",detailsRouter);
 app.use("/api/record",recordRouter);
+app.use("/api/share",shareRouter);
 
 connectDB()
 app.listen(3000,()=>{

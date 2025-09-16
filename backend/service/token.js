@@ -14,4 +14,15 @@ function getUser(token){
     }
 }
 
-export { setUser, getUser };
+function setRecord(recordID){
+    return jwt.sign({recordID},process.env.SHARE_SECRET_KEY,{expiresIn:'24h'})
+}
+function getRecord(token){
+    try{
+        return jwt.verify(token,process.env.SHARE_SECRET_KEY)
+    }catch(err){
+        return null;
+    }
+}
+
+export { setUser, getUser,setRecord,getRecord };
