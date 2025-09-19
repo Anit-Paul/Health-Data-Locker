@@ -9,7 +9,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique:true,
+    unique: true,
     maxLength: 50,
   },
   password: {
@@ -20,6 +20,10 @@ const userSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  emergencyToken: {
+    type: String,
+    unique: true, // each token should be unique
   },
 });
 
