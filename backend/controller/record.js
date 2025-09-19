@@ -5,11 +5,11 @@ async function saveRecordAPI(req, res) {
     const userId = req.user.id; // from authMiddleware
 
     const { fileType, doctorName, description } = req.body;
-
+    console.log(req.file)
     // Cloudinary upload result comes in req.file
     const filePath = req.file.path; // secure URL from Cloudinary
     const fileName = req.file.filename.split("/").pop(); // file name
-
+    
     const newRecord = new RecordModel({
       userId,
       fileName,
