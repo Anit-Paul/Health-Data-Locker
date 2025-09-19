@@ -14,19 +14,24 @@ const storage = new CloudinaryStorage({
     folder: "medical_records", // folder name in Cloudinary
     allowed_formats: ["jpg", "png", "pdf"], // restrict formats
     public_id: (req, file) => {
-      // Replace spaces in fileType with underscores
-      const fileType = req.body.fileType.replace(/\s+/g, "_");
+      // Use fileType if available, otherwise fallback to "record"
+      const fileType =
+        (req.body?.fileType || "record").toString().replace(/\s+/g, "_");
 
-      // Get current date
+      // Get original filename (without extension)
+      const baseName = file.originalname
+        ? file.originalname.split(".")[0].replace(/\s+/g, "_")
+        : "upload";
+
+      // Get current date (YYYY-MM-DD)
       const now = new Date();
       const year = now.getFullYear();
       const month = String(now.getMonth() + 1).padStart(2, "0");
       const day = String(now.getDate()).padStart(2, "0");
-
       const date = `${year}-${month}-${day}`;
 
-      // Return filename: FileType_YYYY-MM-DD
-      return `${fileType}_${date}`;
+      // Final filename: FileType_BaseName_YYYY-MM-DD
+      return `${fileType}_${baseName}_${date}`;
     },
   },
 });
