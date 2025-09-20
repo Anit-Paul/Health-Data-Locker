@@ -24,6 +24,7 @@ const userSchema = new Schema({
   emergencyToken: {
     type: String,
     unique: true, // each token should be unique
+    sparse:true
   },
 });
 
