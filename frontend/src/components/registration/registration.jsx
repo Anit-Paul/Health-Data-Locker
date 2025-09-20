@@ -7,11 +7,14 @@ import styles from "./registration.module.css";
 import Password from "../password/password";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../store/userContext";
+import { useContext } from "react";
 function Registration() {
   const [name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const {getUser}=useContext(UserContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -21,6 +24,7 @@ function Registration() {
         { withCredentials: true }
       );
       if (response.status == 200 || response.status == 201) {
+        await getUser();
         navigate("/details");
       } else {
         return response.data;

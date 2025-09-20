@@ -6,11 +6,13 @@ import styles from "./login.module.css";
 import Password from "../password/password";
 import { useState } from "react";
 import axios from "axios";
-
+import UserContext from "../../store/userContext";
+import { useContext } from "react";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // <-- hook
+  const {getUser}=useContext(UserContext);
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -20,6 +22,7 @@ function Login() {
         { withCredentials: true }
       );
       if (response.status == 200 || response.status == 201) {
+        await getUser();
         navigate("/profile");
       } else {
         console.log(response.data);
