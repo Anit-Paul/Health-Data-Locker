@@ -1,0 +1,173 @@
+.loginContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 12vh 20px 20px 20px;
+    /* Added top padding to account for nav height */
+}
+
+.loginCard {
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.loginTitle {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.formLabel {
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.formInput {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 2.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.formInput:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    outline: none;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    background: #4299e1;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.loginButton:hover {
+    background: #3182ce;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+}
+
+.loginButton svg {
+    font-size: 1.25rem;
+}
+
+.signupLink {
+    display: block;
+    text-align: center;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.signupLink:hover {
+    color: #2b6cb0;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+.auth svg {
+    font-size: 1.5rem;
+}
+
+.auth span {
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.auth:hover {
+    border-color: #4299e1;
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.1);
+}
+
+.loginCard p {
+    text-align: center;
+    color: #718096;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginCard p::before,
+.loginCard p::after {
+    content: "";
+    height: 1px;
+    background-color: #e2e8f0;
+    flex: 1;
+    margin: 0 1rem;
+}
+
+/* Error states */
+.formInput.error {
+    border-color: #fc8181;
+}
+
+.errorMessage {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .loginCard {
+        padding: 1.5rem;
+    }
+
+    .loginTitle {
+        font-size: 1.75rem;
+    }
+
+    .formInput {
+        padding: 0.625rem;
+    }
+}
