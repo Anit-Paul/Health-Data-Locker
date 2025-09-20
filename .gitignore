@@ -31,6 +31,37 @@
 # Uploads (if storing files locally instead of cloud/GridFS)
 /backend/uploads/
 
+#==============================
+/frontend/node_modules/
+/frontend/package-lock.json
+/frontend/package.json
+# Logs
+/frontend/logs
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Environment variables
+/frontend/.env
+
+# Runtime data
+/frontend/pids
+/frontend/*.pid
+/frontend/*.seed
+/frontend/*.pid.lock
+
+# Coverage
+/frontend/coverage/
+/frontend/*.lcov
+
+# Build outputs
+/frontend/dist/
+/frontend/build/
+
+# Uploads (if storing files locally instead of cloud/GridFS)
+/frontend/uploads/
+
 # ==========================
 # OS-specific files
 # ==========================
