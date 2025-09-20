@@ -1,18 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./login.module.css";
 import Password from "../password/password";
 import { useState } from "react";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-    // Call backend API here
+  const navigate = useNavigate(); // <-- hook
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/auth/login`,
+        { email, password },
+        { withCredentials: true }
+      );
+      if (response.status == 200 || response.status == 201) {
+        navigate("/profile");
+      } else {
+        console.log(response.data);
+      }
+    } catch (err) {
+      console.log("error in login.jsx handleSubmit");
+      console.log(err);
+    }
   };
 
   return (
