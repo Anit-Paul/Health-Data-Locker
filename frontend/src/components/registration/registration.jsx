@@ -5,16 +5,30 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./registration.module.css";
 import Password from "../password/password";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Registration() {
-  const [fullName, setFullName] = useState("");
+  const [name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Name:", fullName, "Email:", email, "Password:", password);
-    // TODO: Call your backend API here to register the user
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/auth/register`,
+        { name, email, password },
+        { withCredentials: true }
+      );
+      if (response.status == 200 || response.status == 201) {
+        navigate("/details");
+      } else {
+        return response.data;
+      }
+    } catch (err) {
+      console.log("error in registration.jsx handleSubmit");
+      console.log(err);
+    }
   };
 
   return (
@@ -32,7 +46,7 @@ function Registration() {
               className={styles.formInput}
               id="name"
               placeholder="Enter your Full Name"
-              value={fullName}
+              value={name}
               onChange={(e) => setFullName(e.target.value)}
               required
             />
