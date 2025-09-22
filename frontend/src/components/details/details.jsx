@@ -28,7 +28,7 @@ function Details() {
         { withCredentials: true }
       );
       if (response.status == 200 || response.status == 201) {
-        navigate("/profile");
+        navigate("/profile", { state: { user: response.data } });
       } else {
         console.log(response.data);
       }

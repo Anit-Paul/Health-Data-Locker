@@ -61,6 +61,7 @@ async function fetchAPI(req, res) {
     if (!userData) {
       return res.status(404).json({ message: "No medical details found" });
     }
+    //console.log(userData)
     return res.status(201).json({
         user:userData
     })

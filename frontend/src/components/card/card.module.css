@@ -1,63 +1,188 @@
 .card {
   width: 100%;
-  max-width: 350px;
-  background: #fff;
-  border-radius: 12px;
+  max-width: 320px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* -------- File Preview -------- */
 .filePreview {
-  width: 100%;
-  height: 200px;
-  background: #f8f9fa;
+  height: 180px;
+  background: linear-gradient(135deg, #f8fbff, #eef5ff);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.imagePreview {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.filePreview:hover img,
+.filePreview:hover iframe {
+  transform: scale(1.04);
 }
 
 .pdfPreview {
   width: 100%;
   height: 100%;
   border: none;
+  transition: transform 0.3s ease;
 }
 
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* -------- Card Body -------- */
 .cardBody {
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
 .cardTitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #222;
+  color: #1a1a1a;
   margin: 0;
+}
+
+.cardType {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
 }
 
 .cardDesc {
   font-size: 0.95rem;
-  color: #555;
-  margin: 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+.cardDoctor {
+  font-size: 0.9rem;
+  color: #00695c;
+  font-weight: 600;
 }
 
 .cardDate {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #888;
-  margin-top: auto;
+}
+
+/* -------- Actions -------- */
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.viewBtn,
+.deleteBtn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.25s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.viewBtn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+}
+
+.viewBtn:hover {
+  background: linear-gradient(135deg, #0056b3, #004099);
+  transform: scale(1.04);
+}
+
+.deleteBtn {
+  background: linear-gradient(135deg, #dc3545, #a71d2a);
+  color: #fff;
+}
+
+.deleteBtn:hover {
+  background: linear-gradient(135deg, #a71d2a, #7f141f);
+  transform: scale(1.04);
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .filePreview {
+    height: 160px;
+  }
+
+  .cardBody {
+    padding: 14px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDesc {
+    font-size: 0.9rem;
+  }
+
+  .viewBtn,
+  .deleteBtn {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    border-radius: 12px;
+  }
+
+  .filePreview {
+    height: 140px;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .cardDesc {
+    font-size: 0.85rem;
+  }
+
+  .cardDoctor,
+  .cardDate {
+    font-size: 0.8rem;
+  }
+
+  .viewBtn,
+  .deleteBtn {
+    font-size: 0.8rem;
+    padding: 6px 9px;
+  }
 }
