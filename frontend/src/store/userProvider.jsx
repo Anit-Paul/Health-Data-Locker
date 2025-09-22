@@ -16,7 +16,10 @@ function UserProvider({ children }) {
 
       setUser(response.data); // backend returns { id, email, ... }
     } catch (err) {
-      console.error("❌ Error fetching user:", err.response?.data || err.message);
+      console.error(
+        "❌ Error fetching user:",
+        err.response?.data || err.message
+      );
       setUser(null);
     } finally {
       setLoading(false);
@@ -36,7 +39,7 @@ function UserProvider({ children }) {
 
   return (
     <UserContext.Provider value={value}>
-      {!loading && children} 
+      {!loading && children}
       {/* ✅ don’t render routes until we know if logged in */}
     </UserContext.Provider>
   );

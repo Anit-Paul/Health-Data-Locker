@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./details.module.css";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Details() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,15 +13,29 @@ function Details() {
     birthMark: "",
     physicalDisability: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/details/save`,
+        formData,
+        { withCredentials: true }
+      );
+      if (response.status == 200 || response.status == 201) {
+        navigate("/profile");
+      } else {
+        console.log(response.data);
+      }
+    } catch (err) {
+      console.log("internal error from handleSubmit from details.jsx");
+      console.log(err);
+    }
   };
 
   return (
@@ -29,7 +44,9 @@ function Details() {
       <form className={styles.formGrid} onSubmit={handleSubmit}>
         {/* Full Name */}
         <div className={styles.formGroup}>
-          <label htmlFor="name" className={styles.formLabel}>Full Name</label>
+          <label htmlFor="name" className={styles.formLabel}>
+            Full Name
+          </label>
           <input
             type="text"
             className={styles.formInput}
@@ -44,7 +61,9 @@ function Details() {
 
         {/* DOB */}
         <div className={styles.formGroup}>
-          <label htmlFor="dob" className={styles.formLabel}>Date of Birth</label>
+          <label htmlFor="dob" className={styles.formLabel}>
+            Date of Birth
+          </label>
           <input
             type="date"
             className={styles.formInput}
@@ -96,7 +115,9 @@ function Details() {
 
         {/* Contact */}
         <div className={styles.formGroup}>
-          <label htmlFor="contact" className={styles.formLabel}>Contact Number</label>
+          <label htmlFor="contact" className={styles.formLabel}>
+            Contact Number
+          </label>
           <input
             type="tel"
             className={styles.formInput}
@@ -111,7 +132,9 @@ function Details() {
 
         {/* Emergency Contact */}
         <div className={styles.formGroup}>
-          <label htmlFor="emergencyContact" className={styles.formLabel}>Emergency Contact</label>
+          <label htmlFor="emergencyContact" className={styles.formLabel}>
+            Emergency Contact
+          </label>
           <input
             type="tel"
             className={styles.formInput}
@@ -125,7 +148,9 @@ function Details() {
 
         {/* Birth Mark */}
         <div className={styles.formGroup}>
-          <label htmlFor="birthMark" className={styles.formLabel}>Birth Mark</label>
+          <label htmlFor="birthMark" className={styles.formLabel}>
+            Birth Mark
+          </label>
           <input
             type="text"
             className={styles.formInput}
@@ -139,7 +164,9 @@ function Details() {
 
         {/* Physical Disability */}
         <div className={styles.formGroup}>
-          <label htmlFor="physicalDisability" className={styles.formLabel}>Physical Disability</label>
+          <label htmlFor="physicalDisability" className={styles.formLabel}>
+            Physical Disability
+          </label>
           <input
             type="text"
             className={styles.formInput}
